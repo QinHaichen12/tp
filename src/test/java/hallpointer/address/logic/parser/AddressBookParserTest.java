@@ -22,6 +22,7 @@ import hallpointer.address.logic.commands.ExitCommand;
 import hallpointer.address.logic.commands.FindCommand;
 import hallpointer.address.logic.commands.HelpCommand;
 import hallpointer.address.logic.commands.ListCommand;
+import hallpointer.address.logic.commands.RemarkCommand;
 import hallpointer.address.logic.parser.exceptions.ParseException;
 import hallpointer.address.model.person.NameContainsKeywordsPredicate;
 import hallpointer.address.model.person.Person;
@@ -97,5 +98,10 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_unknownCommand_throwsParseException() {
         assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand("unknownCommand"));
+    }
+
+    @Test
+    public void parseCommand_remark() throws Exception {
+        assertTrue(parser.parseCommand(RemarkCommand.COMMAND_WORD) instanceof RemarkCommand);
     }
 }
